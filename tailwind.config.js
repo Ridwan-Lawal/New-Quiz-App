@@ -20,17 +20,17 @@ export default {
 
       backgroundImage: {
         mobileLightBackground:
-          "url('/public/pattern-background-mobile-light.svg')",
+          "url('/src/assets/pattern-background-mobile-light.svg')",
         mobileDarkBackground:
-          "url('/public/pattern-background-mobile-dark.svg')",
+          "url('/src/assets/pattern-background-mobile-dark.svg')",
         desktopLightBackground:
-          "url('/public/pattern-background-desktop-light.svg')",
+          "url('/src/assets/pattern-background-desktop-light.svg')",
         desktopDarkBackground:
-          "url('/public/pattern-background-desktop-dark.svg')",
+          "url('/src/assets/pattern-background-desktop-dark.svg')",
         tabletLightBackground:
-          "url('/public/pattern-background-tablet-light.svg')",
+          "url('/src/assets/pattern-background-tablet-light.svg')",
         tabletDarkBackground:
-          "url('/public/pattern-background-tablet-dark.svg')",
+          "url('/src/assets/pattern-background-tablet-dark.svg')",
       },
     },
   },

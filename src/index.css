@@ -3,3 +3,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.radio {
+  @apply appearance-none  bg-white  rounded-full p-[9px];
+}
