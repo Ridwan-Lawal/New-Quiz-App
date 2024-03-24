@@ -1,22 +1,37 @@
+import { useContext } from "react";
+import AppContext from "./AppContext";
+
 /* eslint-disable react/prop-types */
 function NavBar({ quiz = "", children }) {
+  const { isDark } = useContext(AppContext);
+
   return (
     <div className="flex items-center justify-between border  pb-6">
       <section className="flex items-center gap-5">
         {children}
-        <p className="text-[19px] font-medium text-almostDark tracking-wide">
+        <p
+          className={`text-[19px] font-medium  tracking-wide sm:text-[27px] ${
+            isDark ? "text-white" : "text-almostDark"
+          }`}
+        >
           {quiz}
         </p>
       </section>
 
       {/* theme switch */}
       <section className="flex items-center gap-3.5">
-        <img src="/src/assets/icon-sun-dark.svg" alt="" />
+        <img
+          src={`/src/assets/icon-sun-${isDark ? "light" : "dark"}.svg`}
+          alt=""
+        />
         <form className="bg-pink w-fit p-1 flex items-center gap-3 rounded-full">
           <input type="radio" name="theme" className="radio" />
           <input type="radio" name="theme" className="radio" />
         </form>
-        <img src="/src/assets/icon-moon-dark.svg" alt="" />
+        <img
+          src={`/src/assets/icon-moon-${isDark ? "light" : "dark"}.svg`}
+          alt=""
+        />
       </section>
     </div>
   );

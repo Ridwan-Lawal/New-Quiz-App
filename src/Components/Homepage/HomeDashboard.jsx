@@ -1,14 +1,26 @@
+import { useContext } from "react";
 import QuizSubjectButton from "./QuizSubjectButton";
+import AppContext from "../AppContext";
 
 function HomeDashboard() {
+  const { isDark } = useContext(AppContext);
+
   return (
-    <div className=" lg:flex mt-12 lg:mt-20  justify-between">
-      <section className=" lg:w-[50%]">
-        <h1 className="text-[2.8rem] sm:text-[3.9rem] leading-[1] text-almostDark  font-light  ">
+    <div className="lg:flex mt-12 lg:mt-20  justify-between">
+      <section className="lg:w-[50%]">
+        <h1
+          className={`text-[2.8rem] sm:text-[3.9rem] leading-[1] font-light ${
+            isDark ? "text-white" : "text-almostDark  "
+          } `}
+        >
           Welcome to the{" "}
           <span className="font-semibold m-0  block">Frontend Quiz!</span>
         </h1>
-        <p className="text-grays sm:text-xl text-lg mt-5 sm:mt-12 italic ">
+        <p
+          className={` sm:text-xl text-lg mt-5 sm:mt-12 italic ${
+            isDark ? "text-almostWhite" : "text-grays"
+          } `}
+        >
           Pick a subject to get started.
         </p>
       </section>

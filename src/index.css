@@ -8,7 +8,7 @@
   @apply appearance-none  bg-white  rounded-full p-[9px];
 }
 
-progress {
+.progress {
   width: 100%;
   height: 9px;
   border: none;
@@ -16,12 +16,17 @@ progress {
   border-radius: 6px;
   overflow: hidden;
 }
-progress::-webkit-progress-value {
+.progress::-webkit-progress-value {
   background-color: #a729f5;
   /border-radius: 5px;
 }
 
-progress::-webkit-progress-bar {
+.progressLight::-webkit-progress-bar {
   background-color: #fff;
+  border-radius: 5px;
+}
+
+.progressDark::-webkit-progress-bar {
+  background-color: #3b4d66;
   border-radius: 5px;
 }
