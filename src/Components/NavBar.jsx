@@ -1,12 +1,10 @@
 /* eslint-disable react/prop-types */
-function NavBar({ quiz = "" }) {
+function NavBar({ quiz = "", children }) {
   return (
-    <div className="flex items-center justify-between border pt-7 pb-6">
+    <div className="flex items-center justify-between border  pb-6">
       <section className="flex items-center gap-5">
-        {/* <section className="border py-1.5 px-1">
-          <img src="/src/assets/icon-html.svg" className="w-8 " alt="" />
-        </section> */}
-        <p className="text-xl font-bold text-almostDark tracking-wide">
+        {children}
+        <p className="text-[19px] font-medium text-almostDark tracking-wide">
           {quiz}
         </p>
       </section>

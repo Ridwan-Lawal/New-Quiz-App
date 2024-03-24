@@ -6,7 +6,7 @@ import PageNotFound from "./Pages/PageNotFound";
 
 function App() {
   return (
-    <div className=" bg-lightGray bg-opacity-10 border border-black font-rubik">
+    <div className=" bg-lightGray bg-opacity-[0.15] border border-black font-rubik">
       <div className="bg-mobileLightBackground sm:bg-tabletLightBackground lg:bg-desktopLightBackground z-40 bg-contain border border-red-600 min-h-screen bg-z bg-no-repeat overflow-auto lg:bg-cover">
         <BrowserRouter>
           <Routes>
