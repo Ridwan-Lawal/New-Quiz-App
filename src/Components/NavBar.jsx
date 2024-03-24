@@ -3,10 +3,10 @@ import AppContext from "./AppContext";
 
 /* eslint-disable react/prop-types */
 function NavBar({ quiz = "", children }) {
-  const { isDark } = useContext(AppContext);
+  const { isDark, dispatch } = useContext(AppContext);
 
   return (
-    <div className="flex items-center justify-between border  pb-6">
+    <div className="flex items-center justify-between   pb-6 ">
       <section className="flex items-center gap-5">
         {children}
         <p
@@ -24,9 +24,24 @@ function NavBar({ quiz = "", children }) {
           src={`/src/assets/icon-sun-${isDark ? "light" : "dark"}.svg`}
           alt=""
         />
-        <form className="bg-pink w-fit p-1 flex items-center gap-3 rounded-full">
-          <input type="radio" name="theme" className="radio" />
-          <input type="radio" name="theme" className="radio" />
+        <form
+          onClick={() => dispatch({ type: "themeSwitch" })}
+          className="bg-pink w-fit p-1 flex items-center gap-3  rounded-full"
+        >
+          <input
+            type="radio"
+            name="theme"
+            className={`radio ${
+              isDark ? "opacity-0" : "opacity-100"
+            } cursor-pointer transition-all duration-600 `}
+          />
+          <input
+            type="radio"
+            name="theme"
+            className={`radio ${
+              !isDark ? "opacity-0" : "opacity-100"
+            } cursor-pointer transition-all duration-6000 `}
+          />
         </form>
         <img
           src={`/src/assets/icon-moon-${isDark ? "light" : "dark"}.svg`}

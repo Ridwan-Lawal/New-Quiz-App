@@ -6,12 +6,20 @@ import PageNotFound from "./Pages/PageNotFound";
 import { useReducer } from "react";
 import AppContext from "./Components/AppContext";
 
+// start fetching data
+
 const intitalValue = {
   isDark: true,
 };
 
 function reducer(state, action) {
-  console.log(state, action);
+  switch (action.type) {
+    case "themeSwitch":
+      return { ...state, isDark: !state.isDark };
+
+    default:
+      throw new Error("Unknown error");
+  }
 }
 
 function App() {
@@ -21,11 +29,11 @@ function App() {
 
   console.log(dispatch);
   return (
-    <AppContext.Provider value={{ isDark }}>
+    <AppContext.Provider value={{ isDark, dispatch }}>
       <div
         className={` border border-black font-rubik  ${
           isDark ? "bg-almostDark" : "bg-lightGray bg-opacity-[0.15]"
-        }`}
+        } transition-all duration-1000`}
       >
         <div
           className={` z-40 bg-contain border border-red-600 min-h-screen bg-z bg-no-repeat overflow-auto lg:bg-cover ${

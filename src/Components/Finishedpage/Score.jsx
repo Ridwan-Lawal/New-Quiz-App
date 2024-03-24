@@ -11,7 +11,7 @@ function Score({ children, quiz }) {
       <div
         className={` flex flex-col items-center py-12 gap-6 rounded-lg mt-11 ${
           isDark ? "bg-darkGray" : "bg-white"
-        } `}
+        } transition-all duration-1000`}
       >
         <section className="flex items-center gap-5">
           {children}

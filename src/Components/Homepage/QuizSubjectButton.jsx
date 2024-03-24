@@ -15,7 +15,7 @@ function QuizSubjectButton({
         isDark
           ? "bg-darkGray text-white sm:shadow-gray-almostDark"
           : "bg-white text-almostDark sm:shadow-[#ededed]"
-      }`}
+      } transition-all duration-1000`}
     >
       <section
         className={`${iconBgColor} px-1.5 py-1.5 rounded-md# bg-opacity-15 `}

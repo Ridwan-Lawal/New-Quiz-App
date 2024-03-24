@@ -6,7 +6,7 @@ function HomeDashboard() {
   const { isDark } = useContext(AppContext);
 
   return (
-    <div className="lg:flex mt-12 lg:mt-20  justify-between">
+    <div className="lg:flex mt-12 lg:mt-20  justify-between transition-all duration-1000">
       <section className="lg:w-[50%]">
         <h1
           className={`text-[2.8rem] sm:text-[3.9rem] leading-[1] font-light ${

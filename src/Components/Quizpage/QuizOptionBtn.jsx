@@ -10,7 +10,7 @@ function QuizOptionBtn({
 
   return (
     <button
-      className={` flex shadow-sm sm:shadow-lg   items-center gap-5 w-full py-3 px-3.5   rounded-xl sm:rounded-2xl border-[3px] 
+      className={` flex shadow-sm sm:shadow-lg   items-center gap-5 w-full py-3 px-3.5   rounded-xl sm:rounded-2xl border-[3px] transition-all duration-1000 
     ${
       isDark
         ? "bg-darkGray border-darkGray  sm:shadow-almostDark text-white"

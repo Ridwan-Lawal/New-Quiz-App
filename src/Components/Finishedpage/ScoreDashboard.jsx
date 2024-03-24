@@ -11,7 +11,7 @@ function ScoreDashboard({ quiz = "HTML", children }) {
       <div
         className={` lg:flex mt-10 lg:mt-16 justify-between ${
           isDark ? "text-white" : "text-darkGray"
-        }`}
+        } transition-all duration-1000`}
       >
         <h1 className="text-[35px] font-light leading-[1.1] md:text-[53px] ">
           Quiz completed{" "}
