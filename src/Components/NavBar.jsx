@@ -8,6 +8,7 @@ function NavBar({ quiz = "", children }) {
     <div className="flex items-center justify-between   pb-6 ">
       <section className="flex items-center gap-5">
         {children}
+
         <p
           className={`text-[19px] font-medium  tracking-wide sm:text-[27px] ${
             isDark ? "text-white" : "text-almostDark"
