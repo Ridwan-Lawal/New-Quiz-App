@@ -1,9 +1,8 @@
-import { useContext } from "react";
+import { useQuiz } from "../AppContext";
 import QuizSubjectButton from "./QuizSubjectButton";
-import AppContext from "../AppContext";
 
 function HomeDashboard() {
-  const { isDark } = useContext(AppContext);
+  const { isDark } = useQuiz();
 
   return (
     <div className="lg:flex mt-12 lg:mt-20  justify-between transition-all duration-1000">

@@ -1,5 +1,4 @@
-import { useContext } from "react";
-import AppContext from "../AppContext";
+import { useQuiz } from "../AppContext";
 
 /* eslint-disable react/prop-types */
 function QuizSubjectButton({
@@ -7,7 +6,7 @@ function QuizSubjectButton({
   subject = "HTML",
   children,
 }) {
-  const { isDark } = useContext(AppContext);
+  const { isDark } = useQuiz();
 
   return (
     <button

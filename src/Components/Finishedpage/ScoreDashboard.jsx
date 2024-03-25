@@ -1,10 +1,9 @@
-import { useContext } from "react";
-import AppContext from "../AppContext";
+import { useQuiz } from "../AppContext";
 import Score from "./Score";
 
 /* eslint-disable react/prop-types */
 function ScoreDashboard({ quiz = "HTML", children }) {
-  const { isDark } = useContext(AppContext);
+  const { isDark } = useQuiz();
 
   return (
     <div>

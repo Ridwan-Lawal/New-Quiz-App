@@ -1,10 +1,9 @@
-import { useContext } from "react";
-import AppContext from "../Components/AppContext";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
+import { useQuiz } from "../Components/AppContext";
 
 function PageNotFound() {
-  const { isDark } = useContext(AppContext);
+  const { isDark } = useQuiz();
   const navigate = useNavigate();
 
   return (

@@ -1,9 +1,8 @@
-import { useContext } from "react";
-import AppContext from "./AppContext";
+import { useQuiz } from "./AppContext";
 
 /* eslint-disable react/prop-types */
 function NavBar({ quiz = "", children }) {
-  const { isDark, dispatch } = useContext(AppContext);
+  const { isDark, dispatch } = useQuiz();
 
   return (
     <div className="flex items-center justify-between   pb-6 ">

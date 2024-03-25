@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import AppContext from "../AppContext";
+import { useQuiz } from "../AppContext";
 
 function QuestionProgress() {
-  const { isDark } = useContext(AppContext);
+  const { isDark } = useQuiz();
 
   return (
     <div className=" lg:min-h-screen flex flex-col justify-between">
