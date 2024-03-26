@@ -4,6 +4,8 @@ import QuizDashboard from "../Components/Quizpage/QuizDashboard";
 import { useQuiz } from "../Components/AppContext";
 import QuestionProgress from "../Components/Quizpage/QuestionProgress";
 
+import QuizSubjectLogo from "../Components/QuizSubjectLogo";
+
 function Quiz() {
   const { quizType } = useParams();
   const { quizData, questionIndex } = useQuiz();
@@ -20,28 +22,13 @@ function Quiz() {
   return (
     <div className="pt-6 sm:pt-9 max-w-[1120px] mx-auto px-6  sm:px-10 pb-14 transition-all duration-1000">
       <NavBar quiz={quizType}>
-        <section className=" overflow-hidden  rounded-md  bg-white">
-          <section
-            className={`${quizType === "HTML" && "bg-reds"} ${
-              quizType === "CSS" && "bg-greens"
-            } ${quizType === "JavaScript" && "bg-blue-500"} ${
-              quizType === "Accessibility" && "bg-pink"
-            } bg-opacity-10 px-1.5 py-1.5`}
-          >
-            <img
-              src={`/src/assets/images/icon-${
-                quizType === "JavaScript" ? "js" : quizType.toLowerCase()
-              }.svg`}
-              className="w-8 "
-              alt=""
-            />
-          </section>
-        </section>
+        <QuizSubjectLogo quizType={quizType} />
       </NavBar>
 
       <QuizDashboard
         currentQuestion={currentQuestion}
         currentQuizQuestions={currentQuizQuestions}
+        quizType={quizType}
       >
         <QuestionProgress
           currentQuestion={currentQuestion}

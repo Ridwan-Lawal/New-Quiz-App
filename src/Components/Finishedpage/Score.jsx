@@ -4,7 +4,7 @@ import { useQuiz } from "../AppContext";
 import ButtonPurple from "../ButtonPurple";
 
 function Score({ children, quiz }) {
-  const { isDark } = useQuiz();
+  const { isDark, quizScore } = useQuiz();
 
   return (
     <div>
@@ -25,9 +25,11 @@ function Score({ children, quiz }) {
         </section>
 
         <section className="text-center">
-          <h2 className="font-medium text-[85px] sm:text-[130px]">0</h2>
+          <h2 className="font-medium text-[85px] sm:text-[130px]">
+            {quizScore}
+          </h2>
 
-          <p className="text-lg sm:text-2xl">out of X</p>
+          <p className="text-lg sm:text-2xl">out of 10</p>
         </section>
       </div>
       <ButtonPurple btnContent="Play Again" />

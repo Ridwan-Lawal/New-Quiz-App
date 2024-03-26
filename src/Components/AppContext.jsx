@@ -7,7 +7,11 @@ const intitalValue = {
   status: "loading",
   errMessage: "",
   questionIndex: 0,
+  optionClicked: "",
+  correctAnswer: "",
+  isSubmitClicked: false,
   quizData: [],
+  quizScore: 0,
 };
 
 function reducer(state, action) {
@@ -21,6 +25,29 @@ function reducer(state, action) {
     case "dataFailed":
       return { ...state, status: "error", errMessage: action.payload };
 
+    case "optionClicked":
+      return { ...state, optionClicked: action.payload };
+
+    case "answerSubmit":
+      return {
+        ...state,
+        isSubmitClicked: true,
+        correctAnswer: action.payload,
+        quizScore:
+          state.optionClicked === action.payload
+            ? state.quizScore + 1
+            : state.quizScore,
+      };
+
+    case "nextQuestion":
+      return {
+        ...state,
+        questionIndex: state.questionIndex + 1,
+        optionClicked: "",
+        correctAnswer: "",
+        isSubmitClicked: false,
+      };
+
     default:
       throw new Error("Unknown error");
   }
@@ -30,7 +57,14 @@ const AppContext = createContext();
 
 function AppProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, intitalValue);
-  const { isDark, quizData, questionIndex } = state;
+  const {
+    isDark,
+    quizData,
+    questionIndex,
+    optionClicked,
+    isSubmitClicked,
+    quizScore,
+  } = state;
 
   useEffect(function () {
     const abortController = new AbortController();
@@ -56,7 +90,17 @@ function AppProvider({ children }) {
   }, []);
 
   return (
-    <AppContext.Provider value={{ isDark, dispatch, quizData, questionIndex }}>
+    <AppContext.Provider
+      value={{
+        isDark,
+        dispatch,
+        quizData,
+        questionIndex,
+        optionClicked,
+        isSubmitClicked,
+        quizScore,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );

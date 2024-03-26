@@ -5,6 +5,9 @@ import Finished from "/src/Pages/Finished";
 import Quiz from "/src/Pages/Quiz";
 import PageNotFound from "/src/Pages/PageNotFound";
 import { useQuiz } from "./AppContext";
+// handle the play again
+// store the theme in the local storage
+// store the current data in the initial value in the context so when we reload the app continues from where it stops
 
 function MainAppContent() {
   const { isDark } = useQuiz();
@@ -27,7 +30,7 @@ function MainAppContent() {
             <Routes>
               <Route path="/" element={<Homepage />} />
               <Route path="quiz/:quizType" element={<Quiz />} />
-              <Route path="finished" element={<Finished />} />
+              <Route path="finished/:quizType" element={<Finished />} />
               <Route path="*" element={<PageNotFound />} />
             </Routes>
           </BrowserRouter>
