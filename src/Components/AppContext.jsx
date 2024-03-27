@@ -1,6 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
 import { createContext, useContext, useEffect, useReducer } from "react";
+import Quizzes from "../localData/data.json";
 
 const intitalValue = {
   isDark: JSON.parse(localStorage.getItem("testTheme")),
@@ -10,7 +11,7 @@ const intitalValue = {
   optionClicked: "",
   correctAnswer: "",
   isSubmitClicked: false,
-  quizData: [],
+  quizData: Quizzes,
   quizScore: 0,
 };
 
@@ -75,29 +76,6 @@ function AppProvider({ children }) {
     isSubmitClicked,
     quizScore,
   } = state;
-
-  useEffect(function () {
-    const abortController = new AbortController();
-    const signal = abortController.signal;
-
-    async function getQuiz() {
-      try {
-        const res = await fetch(`http://localhost:5000/quizzes`);
-        if (!res.ok)
-          throw new Error("Something went wrong fetching data", { signal });
-
-        const data = await res.json();
-        dispatch({ type: "dataReady", payload: data });
-      } catch (err) {
-        console.log(err);
-        if (err.name === "AbortError") return;
-        dispatch({ type: "dataFailed", payload: err.message });
-      }
-    }
-    getQuiz();
-
-    return () => abortController.abort();
-  }, []);
 
   //  Effect to store current theme in the  local storage
   useEffect(
