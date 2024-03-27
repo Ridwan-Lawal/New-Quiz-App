@@ -12,12 +12,12 @@ function MainAppContent() {
   return (
     <div>
       <div
-        className={` border border-black font-rubik  ${
+        className={`  font-rubik  ${
           isDark ? "bg-almostDark" : "bg-lightGray bg-opacity-[0.15]"
         } transition-all duration-1000`}
       >
         <div
-          className={` z-40 bg-contain border border-red-600 min-h-screen bg-z bg-no-repeat overflow-auto lg:bg-cover ${
+          className={` z-40 bg-contain min-h-screen bg-z bg-no-repeat overflow-auto lg:bg-cover ${
             isDark
               ? "bg-mobileDarkBackground sm:bg-tabletDarkBackground lg:bg-desktopDarkBackground"
               : "bg-mobileLightBackground sm:bg-tabletLightBackground lg:bg-desktopLightBackground"
