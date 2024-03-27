@@ -1,10 +1,12 @@
 /* eslint-disable react/prop-types */
 
+import { useNavigate } from "react-router-dom";
 import { useQuiz } from "../AppContext";
 import ButtonPurple from "../ButtonPurple";
 
 function Score({ children, quiz }) {
-  const { isDark, quizScore } = useQuiz();
+  const { isDark, quizScore, dispatch } = useQuiz();
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -32,7 +34,13 @@ function Score({ children, quiz }) {
           <p className="text-lg sm:text-2xl">out of 10</p>
         </section>
       </div>
-      <ButtonPurple btnContent="Play Again" />
+      <ButtonPurple
+        onClick={() => {
+          navigate("/");
+          dispatch({ type: "playAgain" });
+        }}
+        btnContent="Play Again"
+      />
     </div>
   );
 }

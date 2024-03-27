@@ -3,7 +3,7 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 
 const intitalValue = {
-  isDark: true,
+  isDark: JSON.parse(localStorage.getItem("testTheme")),
   status: "loading",
   errMessage: "",
   questionIndex: 0,
@@ -48,6 +48,13 @@ function reducer(state, action) {
         isSubmitClicked: false,
       };
 
+    case "playAgain":
+      return {
+        ...intitalValue,
+        status: "ready",
+        quizData: state.quizData,
+      };
+
     default:
       throw new Error("Unknown error");
   }
@@ -56,7 +63,10 @@ function reducer(state, action) {
 const AppContext = createContext();
 
 function AppProvider({ children }) {
-  const [state, dispatch] = useReducer(reducer, intitalValue);
+  const [state, dispatch] = useReducer(
+    reducer,
+    JSON.parse(localStorage.getItem("quizStateValue"))
+  );
   const {
     isDark,
     quizData,
@@ -88,6 +98,22 @@ function AppProvider({ children }) {
 
     return () => abortController.abort();
   }, []);
+
+  //  Effect to store current theme in the  local storage
+  useEffect(
+    function () {
+      localStorage.setItem("testTheme", JSON.stringify(isDark));
+    },
+    [isDark]
+  );
+
+  // Effect to store the stateValue in the localStorage
+  useEffect(
+    function () {
+      localStorage.setItem("quizStateValue", JSON.stringify(state));
+    },
+    [state]
+  );
 
   return (
     <AppContext.Provider
