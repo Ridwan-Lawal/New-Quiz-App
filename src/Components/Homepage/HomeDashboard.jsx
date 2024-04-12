@@ -27,12 +27,12 @@ function HomeDashboard() {
       </section>
 
       <section className="lg:w-[50%]  mt-14 lg:mt-0 space-y-4 flex flex-col sm:space-y-6">
-        {quizData?.map((quiz) => (
+        {quizData?.map((quiz, i) => (
           <Link
+            key={i}
             to={`/quiz/${quiz?.title}?id=${quiz?.id}?question=${
               questionIndex + 1
             }`}
-            key={quiz.id}
           >
             <QuizSubjectButton subject={quiz.title}>
               <QuizSubjectLogo quizType={quiz?.title} />

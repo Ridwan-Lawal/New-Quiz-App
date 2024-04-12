@@ -1,10 +1,16 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
-import { createContext, useContext, useEffect, useReducer } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useReducer,
+} from "react";
 import Quizzes from "../localData/data.json";
 
 const intitalValue = {
-  isDark: JSON.parse(localStorage.getItem("testTheme")),
+  isDark: false,
   status: "loading",
   errMessage: "",
   questionIndex: 0,
@@ -56,6 +62,29 @@ function reducer(state, action) {
         quizData: state.quizData,
       };
 
+    case "storedState/fromStorage":
+      return {
+        ...action.payload,
+        status: "loading",
+        questionIndex: 0,
+        optionClicked: "",
+        correctAnswer: "",
+        isSubmitClicked: false,
+      };
+
+    case "navigate/homepage":
+      return {
+        ...state,
+        status: "loading",
+        errMessage: "",
+        questionIndex: 0,
+        optionClicked: "",
+        correctAnswer: "",
+        isSubmitClicked: false,
+        quizData: Quizzes,
+        quizScore: 0,
+      };
+
     default:
       throw new Error("Unknown error");
   }
@@ -64,10 +93,7 @@ function reducer(state, action) {
 const AppContext = createContext();
 
 function AppProvider({ children }) {
-  const [state, dispatch] = useReducer(
-    reducer,
-    JSON.parse(localStorage.getItem("quizStateValue"))
-  );
+  const [state, dispatch] = useReducer(reducer, intitalValue);
   const {
     isDark,
     quizData,
@@ -77,37 +103,45 @@ function AppProvider({ children }) {
     quizScore,
   } = state;
 
-  //  Effect to store current theme in the  local storage
-  useEffect(
-    function () {
-      localStorage.setItem("testTheme", JSON.stringify(isDark));
-    },
-    [isDark]
-  );
-
   // Effect to store the stateValue in the localStorage
   useEffect(
     function () {
+      if (state === intitalValue) return;
       localStorage.setItem("quizStateValue", JSON.stringify(state));
     },
     [state]
   );
 
-  return (
-    <AppContext.Provider
-      value={{
-        isDark,
-        dispatch,
-        quizData,
-        questionIndex,
-        optionClicked,
-        isSubmitClicked,
-        quizScore,
-      }}
-    >
-      {children}
-    </AppContext.Provider>
-  );
+  // effect to get the stateVAlue from the local storage
+
+  useEffect(function () {
+    const storedState = JSON.parse(localStorage.getItem("quizStateValue"));
+
+    if (!storedState) return;
+    dispatch({ type: "storedState/fromStorage", payload: storedState });
+  }, []);
+
+  const values = useMemo(() => {
+    return {
+      isDark,
+      dispatch,
+      quizData,
+      questionIndex,
+      optionClicked,
+      isSubmitClicked,
+      quizScore,
+    };
+  }, [
+    isDark,
+    dispatch,
+    quizData,
+    questionIndex,
+    optionClicked,
+    isSubmitClicked,
+    quizScore,
+  ]);
+
+  return <AppContext.Provider value={values}>{children}</AppContext.Provider>;
 }
 
 function useQuiz() {

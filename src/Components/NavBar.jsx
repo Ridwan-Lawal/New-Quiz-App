@@ -1,12 +1,21 @@
+import { useNavigate } from "react-router-dom";
 import { useQuiz } from "./AppContext";
 
 /* eslint-disable react/prop-types */
 function NavBar({ quiz = "", children }) {
   const { isDark, dispatch } = useQuiz();
 
+  const navigate = useNavigate();
+
   return (
     <div className="flex items-center justify-between   pb-6 ">
-      <section className="flex items-center gap-5">
+      <section
+        onClick={() => {
+          navigate("/");
+          dispatch({ type: "navigate/homepage" });
+        }}
+        className="flex cursor-pointer items-center gap-5"
+      >
         {children}
 
         <p

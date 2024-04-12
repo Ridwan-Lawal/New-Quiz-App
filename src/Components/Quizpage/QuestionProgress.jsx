@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+
 import { useQuiz } from "../AppContext";
 
 function QuestionProgress({ currentQuizQuestions, currentQuestion }) {
