@@ -11,11 +11,7 @@ function QuizSubjectLogo({ quizType }) {
           quizType === "Accessibility" && "bg-pink"
         } bg-opacity-10 px-1.5 py-1.5`}
       >
-        <img
-          src={`/src/assets/images/icon-${iconType}.svg`}
-          className="w-8"
-          alt=""
-        />
+        <img src={`/images/icon-${iconType}.svg`} className="w-8" alt="" />
       </div>
     </div>
   );

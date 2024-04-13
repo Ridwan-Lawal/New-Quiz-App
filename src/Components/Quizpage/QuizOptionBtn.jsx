@@ -65,14 +65,12 @@ function QuizOptionBtn({
         <p className="text-lg sm:text-[22px] font-medium ">{option}</p>
       </div>
       {isSubmitClicked && option === correctAnswer && (
-        <img src="/src/assets/icon-correct.svg" alt="" />
+        <img src="/images/icon-correct.svg" alt="" />
       )}
 
       {isSubmitClicked &&
         option === optionClicked &&
-        option !== correctAnswer && (
-          <img src="/src/assets/icon-error.svg" alt="" />
-        )}
+        option !== correctAnswer && <img src="/images/icon-error.svg" alt="" />}
     </button>
   );
 }

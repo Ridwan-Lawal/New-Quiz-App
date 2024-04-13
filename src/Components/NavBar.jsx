@@ -29,10 +29,7 @@ function NavBar({ quiz = "", children }) {
 
       {/* theme switch */}
       <section className="flex items-center gap-3.5">
-        <img
-          src={`/src/assets/icon-sun-${isDark ? "light" : "dark"}.svg`}
-          alt=""
-        />
+        <img src={`/images/icon-sun-${isDark ? "light" : "dark"}.svg`} alt="" />
         <form
           onClick={() => dispatch({ type: "themeSwitch" })}
           className="bg-pink w-fit p-1 flex items-center gap-3  rounded-full"
@@ -53,7 +50,7 @@ function NavBar({ quiz = "", children }) {
           />
         </form>
         <img
-          src={`/src/assets/icon-moon-${isDark ? "light" : "dark"}.svg`}
+          src={`/images/icon-moon-${isDark ? "light" : "dark"}.svg`}
           alt=""
         />
       </section>

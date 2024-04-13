@@ -60,6 +60,7 @@ function reducer(state, action) {
         ...intitalValue,
         status: "ready",
         quizData: state.quizData,
+        isDark: state.isDark,
       };
 
     case "storedState/fromStorage":
